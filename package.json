@@ -8,9 +8,7 @@
     "test": "jest",
     "lint": "echo 'Linting...'",
     "ci": "npm run build && npm run test && npm run lint"
- 
-    // "test": "echo \"Error: no test specified\" && exit 1"
-  },
+   },
   "keywords": [],
   "author": "",
   "license": "ISC",
