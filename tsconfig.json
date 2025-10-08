@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    // === CRITICAL CHANGES ===
+    "rootDir": "./src",              // Tell TS where your source code is
+    "outDir": "./dist",              // Tell TS where to output compiled JS
+
+    // === MODULE SETTINGS FOR MODERN NODE ===
+    "module": "nodenext",
+    "target": "esnext",
+    // "types": [] // REMOVED this line to allow automatic types for Node and Jest
+
+    // === OTHER SETTINGS (Your config is great here!) ===
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"] // Explicitly include only the src directory for compilation
+}

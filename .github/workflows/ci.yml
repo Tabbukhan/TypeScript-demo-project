@@ -1,0 +1,47 @@
+# .github/workflows/ci.yml
+
+# Name of your workflow
+name: Node.js CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ] # Runs on pushes to the main branch
+  pull_request:
+    branches: [ "main" ] # Runs on pull requests targeting the main branch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This job is named "build-and-test"
+  build-and-test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Step 1: Checkout the code (similar to Source Code Checkout in Bamboo)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js environment (similar to setting up an executable in Bamboo)
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm' # Caches npm packages for faster subsequent runs
+
+      # Step 3: Install dependencies (similar to a Script task in Bamboo)
+      - name: Install dependencies
+        run: npm ci # 'ci' is generally faster and more reliable for CI environments than 'install'
+
+      # Step 4: Build the project (a Script task in Bamboo)
+      - name: Build project
+        run: npm run build
+
+      # Step 5: Run tests (a Script task in Bamboo)
+      - name: Run tests
+        run: npm run test
+        
+      # Step 6: Run linter (a Script task in Bamboo)
+      - name: Lint code
+        run: npm run lint
