@@ -1,4 +1,4 @@
-import { greet } from './index';
+import { greet } from './index.js';
 
 describe('greet function', () => {
   it('should return a greeting message', () => {
